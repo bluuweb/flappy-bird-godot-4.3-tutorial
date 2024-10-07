@@ -1,0 +1,41 @@
+[gd_scene load_steps=8 format=3 uid="uid://da7x2fnt6mahx"]
+
+[ext_resource type="Texture2D" uid="uid://c7pbvmdg2yssd" path="res://art/sprites/redbird-downflap.png" id="1_gfc3d"]
+[ext_resource type="Script" path="res://scripts/bird.gd" id="1_kcvcf"]
+[ext_resource type="Texture2D" uid="uid://ca3uhaiwxkfw1" path="res://art/sprites/redbird-midflap.png" id="2_76upa"]
+[ext_resource type="Texture2D" uid="uid://ditbqlx84hjc" path="res://art/sprites/redbird-upflap.png" id="3_qxv3g"]
+[ext_resource type="AudioStream" uid="uid://dxoprahvppj0v" path="res://art/audio/wing.wav" id="5_8gtyt"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7t6xo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_gfc3d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_76upa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_qxv3g")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b113a"]
+
+[node name="Bird" type="CharacterBody2D"]
+script = ExtResource("1_kcvcf")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_7t6xo")
+animation = &"fly"
+autoplay = "fly"
+frame_progress = 0.789412
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_b113a")
+
+[node name="AudioFly" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_8gtyt")

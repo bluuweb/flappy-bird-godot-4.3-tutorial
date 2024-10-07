@@ -1,0 +1,53 @@
+[gd_scene load_steps=9 format=3 uid="uid://dtw37d2ssrsav"]
+
+[ext_resource type="Script" path="res://scripts/level.gd" id="1_m6esu"]
+[ext_resource type="Texture2D" uid="uid://dvt8qqgxxj3yj" path="res://art/sprites/background-day.png" id="1_wjvdx"]
+[ext_resource type="Texture2D" uid="uid://bv8770gsldo67" path="res://art/sprites/base.png" id="2_dsman"]
+[ext_resource type="PackedScene" uid="uid://bhu36tmsd2n4u" path="res://scenes/pipe_game.tscn" id="2_x4cl8"]
+[ext_resource type="PackedScene" uid="uid://rdekpkyjfi2x" path="res://scenes/gui.tscn" id="3_8sest"]
+[ext_resource type="PackedScene" uid="uid://da7x2fnt6mahx" path="res://scenes/bird.tscn" id="3_eje67"]
+[ext_resource type="AudioStream" uid="uid://b8kwfkc2thhkg" path="res://art/audio/hit.wav" id="3_vq6qq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iyxcg"]
+size = Vector2(336, 53)
+
+[node name="Level" type="Node"]
+script = ExtResource("1_m6esu")
+pipe_game_scene = ExtResource("2_x4cl8")
+
+[node name="AudioGameOver" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_vq6qq")
+
+[node name="GUI" parent="." instance=ExtResource("3_8sest")]
+
+[node name="ParallaxBackground" type="Parallax2D" parent="."]
+repeat_size = Vector2(288, 0)
+autoscroll = Vector2(-30, 0)
+
+[node name="Background-day" type="Sprite2D" parent="ParallaxBackground"]
+position = Vector2(144, 256)
+texture = ExtResource("1_wjvdx")
+
+[node name="ParallaxFloor" type="Parallax2D" parent="."]
+repeat_size = Vector2(336, 0)
+autoscroll = Vector2(-60, 0)
+
+[node name="Base" type="Sprite2D" parent="ParallaxFloor"]
+position = Vector2(144, 464)
+texture = ExtResource("2_dsman")
+
+[node name="Bird" parent="." instance=ExtResource("3_eje67")]
+z_index = 1
+position = Vector2(136, 116)
+
+[node name="TimerPipe" type="Timer" parent="."]
+wait_time = 1.5
+
+[node name="AreaFloor" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaFloor"]
+position = Vector2(136, 434.5)
+shape = SubResource("RectangleShape2D_iyxcg")
+
+[connection signal="timeout" from="TimerPipe" to="." method="_on_timer_pipe_timeout"]
+[connection signal="body_entered" from="AreaFloor" to="." method="_on_area_floor_body_entered"]

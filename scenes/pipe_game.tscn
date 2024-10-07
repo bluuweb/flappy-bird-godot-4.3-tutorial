@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://bhu36tmsd2n4u"]
+
+[ext_resource type="PackedScene" uid="uid://c1hjle1j4xus5" path="res://scenes/pipe.tscn" id="1_nskba"]
+[ext_resource type="Script" path="res://scripts/pipe_game.gd" id="1_sgq0x"]
+[ext_resource type="AudioStream" uid="uid://b8kwfkc2thhkg" path="res://art/audio/hit.wav" id="3_hvhvd"]
+[ext_resource type="AudioStream" uid="uid://66jq0f43wc3x" path="res://art/audio/point.wav" id="4_gef45"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_shvbp"]
+size = Vector2(20, 160)
+
+[node name="Pipe_game" type="Node2D"]
+script = ExtResource("1_sgq0x")
+metadata/_edit_group_ = true
+
+[node name="PipeDown" parent="." instance=ExtResource("1_nskba")]
+position = Vector2(24, 224)
+
+[node name="PipeTop" parent="." instance=ExtResource("1_nskba")]
+position = Vector2(24, -224)
+rotation = 3.14159
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(120, 0)
+
+[node name="AreaAddPoint" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaAddPoint"]
+position = Vector2(64, 0)
+shape = SubResource("RectangleShape2D_shvbp")
+
+[node name="AudioGameOver" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_hvhvd")
+
+[node name="AudioPoint" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_gef45")
+
+[connection signal="body_entered" from="PipeDown" to="." method="_on_pipe_bird"]
+[connection signal="body_entered" from="PipeTop" to="." method="_on_pipe_bird"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_exit"]
+[connection signal="body_entered" from="AreaAddPoint" to="." method="_on_area_add_point_body_entered"]
