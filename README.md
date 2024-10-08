@@ -4,8 +4,8 @@
 
 - Revisa el tutorial en youtube aquí: [https://www.youtube.com/watch?v=3LuCpsFyXQM](https://www.youtube.com/watch?v=3LuCpsFyXQM)
 
-Links:
-❤️ Assets: [https://github.com/samuelcust/flappy-bird-assets](https://github.com/samuelcust/flappy-bird-assets)
-❤️ Font: [https://github.com/paulkr/Flappy-Bird/blob/master/lib/res/fonts/flappy-font.ttf](https://github.com/paulkr/Flappy-Bird/blob/master/lib/res/fonts/flappy-font.ttf)
-❤️ Código Final: [https://github.com/bluuweb/flappy-bird-godot-4.3-tutorial](https://github.com/bluuweb/flappy-bird-godot-4.3-tutorial)
-❤️ Curso de Godot 4.3: [https://bit.ly/3Y9oag0](https://bit.ly/3Y9oag0)
+### Links:
+- ❤️ Assets: [https://github.com/samuelcust/flappy-bird-assets](https://github.com/samuelcust/flappy-bird-assets)
+- ❤️ Font: [https://github.com/paulkr/Flappy-Bird/blob/master/lib/res/fonts/flappy-font.ttf](https://github.com/paulkr/Flappy-Bird/blob/master/lib/res/fonts/flappy-font.ttf)
+- ❤️ Código Final: [https://github.com/bluuweb/flappy-bird-godot-4.3-tutorial](https://github.com/bluuweb/flappy-bird-godot-4.3-tutorial)
+- ❤️ Curso de Godot 4.3: [https://bit.ly/3Y9oag0](https://bit.ly/3Y9oag0)
